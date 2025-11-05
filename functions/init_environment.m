@@ -46,7 +46,7 @@ trainOptions.UseParallel = true;
 trainOptions.ParallelizationOptions.Mode = "async";
 
 %% OBSERVATION AND ACTION
-numObs = 39;
+numObs = 43;
 numAct = 8;
 obsInfo = rlNumericSpec([numObs, 1]);
 actInfo = rlNumericSpec([numAct, 1], "UpperLimit", 1, "LowerLimit", -1);
