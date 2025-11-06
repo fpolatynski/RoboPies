@@ -1,6 +1,6 @@
 % Generate seed
 % Check if GPU is available and set training options accordingly
-rng(2280)
+rng(80)
 
 % Initialise all variables
 addpath("functions\");
@@ -16,6 +16,9 @@ env = rlSimulinkEnv("RoboPies", "RoboPies/Agent", obsInfo, actInfo);
 % Create the DDPG agent
 agent = createTD3Agent(numObs, obsInfo, numAct, actInfo, T);
 %%
+% % parallelization
+trainOptions.UseParallel = true;
+trainOptions.ParallelizationOptions.Mode = "async";
 trainingStats = train(agent, env, trainOptions, Evaluator=evaluator);
 
 %%
