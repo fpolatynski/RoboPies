@@ -45,3 +45,5 @@ max_knee_speed = 8;
 max_hip_speed = 6;
 max_a = 60;
 max_v = 1;
+%% Training
+max_episodes = 5000;
