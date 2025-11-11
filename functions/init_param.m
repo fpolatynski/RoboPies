@@ -1,11 +1,12 @@
 %% Simulation
-Tf = 10;
+Tf = 5;
 T = 0.025;
 % World plane
 plane_color = [0.8, 0.7, 1];
 density = 500;               % kg/m^3
 plane = [25, 10, 0.05];     % m
-ground_offset = 0.152;
+
+robot_offset = 0;
 %% ROBOT
 robot_color = [1, 0.5, 0.5];
 % Torso
@@ -13,10 +14,10 @@ torso = [0.2, 0.12, 0.03];   % m
 % Leg
 upper_leg = [0.08, 0.01, 0.01];    % m
 lower_leg = [0.08, 0.01, 0.01];    % m
-initial_hip_angle = -pi/4;   % rad
+initial_hip_angle = -pi/5;   % rad
 hip_max_angle = 0;
 hip_min_angle = -pi/2;
-initial_knee_angle = pi/2;   % rad
+initial_knee_angle = pi/2.5;   % rad
 knee_max_angle = pi;
 knee_min_angle = 0;
 init_left = pi/2;
@@ -47,3 +48,5 @@ max_a = 60;
 max_v = 1;
 %% Training
 max_episodes = 5000;
+[x, z0] = kinematics(initial_hip_angle, initial_knee_angle);
+ground_offset = z0 - foot_radius - plane(3)/2;
