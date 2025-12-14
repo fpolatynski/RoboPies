@@ -6,7 +6,7 @@ function [criticNetwork1, criticNetwork2, actorNetwork] = createNetworks(numObs,
 %% === Configuration ===
 criticLayerSizes = [400 300];
 actorLayerSizes  = [400 300];
-finalInitScale   = 5e-3; % small output init
+finalInitScale   = 5e-2; % small output init
 useLayerNorm     = true; % toggle normalization
 
 %% === Helper for optional normalization ===
@@ -18,7 +18,7 @@ end
 
 %% === CRITIC 1 ===
 statePath1 = [
-    featureInputLayer(numObs, Name="ObsInLyr")
+    featureInputLayer(numObs, Name="Observations")
     fullyConnectedLayer(criticLayerSizes(1), ...
         Weights=2/sqrt(numObs)*(rand(criticLayerSizes(1),numObs)-0.5), ...
         Bias=2/sqrt(numObs)*(rand(criticLayerSizes(1),1)-0.5), ...
@@ -32,7 +32,7 @@ statePath1 = [
     ];
 
 actionPath1 = [
-    featureInputLayer(numAct, Name="ActInLyr")
+    featureInputLayer(numAct, Name="Actions")
     fullyConnectedLayer(criticLayerSizes(2), ...
         Weights=2/sqrt(numAct)*(rand(criticLayerSizes(2),numAct)-0.5), ...
         Bias=2/sqrt(numAct)*(rand(criticLayerSizes(2),1)-0.5), ...
@@ -59,7 +59,7 @@ criticNetwork1 = dlnetwork(criticNetwork1);
 
 %% === CRITIC 2 ===
 statePath2 = [
-    featureInputLayer(numObs, Name="ObsInLyr")
+    featureInputLayer(numObs, Name="Observations")
     fullyConnectedLayer(criticLayerSizes(1), ...
         Weights=2/sqrt(numObs)*(rand(criticLayerSizes(1),numObs)-0.5), ...
         Bias=2/sqrt(numObs)*(rand(criticLayerSizes(1),1)-0.5), ...
@@ -73,7 +73,7 @@ statePath2 = [
     ];
 
 actionPath2 = [
-    featureInputLayer(numAct, Name="ActInLyr")
+    featureInputLayer(numAct, Name="Actions")
     fullyConnectedLayer(criticLayerSizes(2), ...
         Weights=2/sqrt(numAct)*(rand(criticLayerSizes(2),numAct)-0.5), ...
         Bias=2/sqrt(numAct)*(rand(criticLayerSizes(2),1)-0.5), ...
@@ -100,7 +100,7 @@ criticNetwork2 = dlnetwork(criticNetwork2);
 
 %% === ACTOR ===
 actorNetwork = [
-    featureInputLayer(numObs, Name="ObsInLyr")
+    featureInputLayer(numObs, Name="Observations")
     fullyConnectedLayer(actorLayerSizes(1), ...
         Weights=2/sqrt(numObs)*(rand(actorLayerSizes(1),numObs)-0.5), ...
         Bias=2/sqrt(numObs)*(rand(actorLayerSizes(1),1)-0.5), ...

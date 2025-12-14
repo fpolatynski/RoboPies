@@ -7,18 +7,18 @@ addpath("functions\");
 addpath("logs\")
 init_param;
 init_environment;
-
+%%
 % Open model
 mdl = "RoboPies";
 open_system(mdl)
 
 env = rlSimulinkEnv("RoboPies", "RoboPies/Agent", obsInfo, actInfo);
 %in = Simulink.SimulationInput(mdl);
-env.ResetFcn = @(in) reset_height(in);
+% env.ResetFcn = @(in) reset_height(in);
 %env.ResetFcn = @(in) setVariable(in, 'robot_offset', 10);
 %agent = rlDDPGAgent(obsInfo, actInfo, initOptions, agentOptions);
 % Create the DDPG agent
-%agent = createTD3Agent(numObs, obsInfo, numAct, actInfo, T);
+agent = createTD3Agent(numObs, obsInfo, numAct, actInfo, T);
 %%
 
 trainOptions.UseParallel = true;
