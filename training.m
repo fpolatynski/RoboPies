@@ -29,4 +29,4 @@ trainingStats = train(agent, env, trainOptions, Evaluator=evaluator, Logger=logg
 simOptions = rlSimulationOptions(MaxSteps=floor(Tf/T));
 experiences = sim(env,agent,simOptions);
 %%
-%agent = episodeData.Agent{1};
+agent = episodeData.Agent{1};
