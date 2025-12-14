@@ -49,9 +49,8 @@ max_v = 1;
 max_episodes = 5000;
 z0 = -0.11;
 ground_offset = z0 - foot_radius - plane(3)/2;
-[phi1, phi2] = inverse_kinematics(-z0);
-initial_hip_angle=phi1;
-initial_knee_angle= phi2;
+initial_hip_angle=-0.8128;
+initial_knee_angle= 1.6255;
 
 %% Reward
 reward;
