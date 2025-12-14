@@ -13,4 +13,5 @@ function [phi1, phi2] = inverse_kinematics1(x, z)
         alfa2 =- alfa2;
     end
     phi1 = alfa1 + alfa2;
+    [phi1, phi2]
 end

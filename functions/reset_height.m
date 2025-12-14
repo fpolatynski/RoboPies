@@ -1,7 +1,7 @@
 function in = reset_height(in)
     z0 = evalin('base', 'z0');
     r = rand;
-    bound = [-0.03 0.01];
+    bound = [0.00029 0.0003];
     robot_offset = r * (bound(2) - bound(1)) + bound(1);
     [phi1, phi2] = inverse_kinematics(-z0 + robot_offset);
     disp(robot_offset);

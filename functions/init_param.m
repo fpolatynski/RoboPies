@@ -1,26 +1,26 @@
 %% Simulation
-Tf = 5;
+Tf = 6;
 T = 0.025;
 % World plane
-plane_color = [0.8, 0.7, 1];
+plane_color = [0.4, 0.9, 0.4];
 density = 500;               % kg/m^3
 plane = [25, 10, 0.05];     % m
 
 robot_offset = 0;
 %% ROBOT
-robot_color = [1, 0.5, 0.5];
+robot_color = [0.6, 0.1, 0.1];
 % Torso
 torso = [0.2, 0.12, 0.03];   % m
 % Leg
 upper_leg = [0.08, 0.01, 0.01];    % m
 lower_leg = [0.08, 0.01, 0.01];    % m
-initial_hip_angle = -pi/5;   % rad
-hip_max_angle = 0;
-hip_min_angle = -pi/2;
-initial_knee_angle = pi/2.5;   % rad
+initial_hip_angle = -pi/3.5;   % rad
+hip_max_angle = -1/8*pi;
+hip_min_angle = -7/16*pi;
+initial_knee_angle = pi/1.75;   % rad
 knee_max_angle = pi;
-knee_min_angle = 0;
-init_left = pi/2;
+knee_min_angle = 1/2*pi;
+init_left = 3/4*pi;
 foot_radius = 0.01;
 
 % Motor
@@ -34,7 +34,6 @@ contact_dynamic_friction = 0.7;
 
 % Regulator
 k = 0.8;
-x = 0.3;
 
 % controller
 bias = 0;
@@ -48,5 +47,11 @@ max_a = 60;
 max_v = 1;
 %% Training
 max_episodes = 5000;
-[x, z0] = kinematics(initial_hip_angle, initial_knee_angle);
+z0 = -0.11;
 ground_offset = z0 - foot_radius - plane(3)/2;
+[phi1, phi2] = inverse_kinematics(-z0);
+initial_hip_angle=phi1;
+initial_knee_angle= phi2;
+
+%% Reward
+reward;
