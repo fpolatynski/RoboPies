@@ -11,4 +11,7 @@ if everything is installed simply run
 `run.m`.
 It will download agent and run simulation.
 
-All files used for design are in reset repository but those are not cleaned and describet yet.
+All files used for design are in resetbranch but those are not cleaned and describet yet.
+
+## Compare
+In order to compare algorithm with standard PID and triangular leg trajectory go to compare folder and run `compare_init.m`
